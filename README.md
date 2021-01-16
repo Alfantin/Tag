@@ -4,7 +4,13 @@ I created it for my personal unity projects to save game, level, settings etc an
 
 I did't test yet. I still developing it.
 
-    //CREATE
+SUPPORTED TYPES
+
+    bool, byte, int, float, string, Vector2, Vector3, Vector4, Quaternion, Color
+
+
+CONSTRUCTOR
+
     var data = new Nbt(
         new Nbt("map", "lake"),
         new Nbt("settings", 
@@ -28,11 +34,39 @@ I did't test yet. I still developing it.
         )
     );
 
-	//SAVE
+TO SAVE & LOAD
+
     data.Save("test.nbt");
-    
-	//LOAD
     data = Nbt.Read("test.nbt");
     
-	//READ SAMPLE
+TO SET
+
+    data.Set("name", value);
+    
+TO GET
+
+    data.GetBool("name");
+    data.GetByte("name");
+    data.GetInt("name");
+    data.GetFloat("name");
+    data.GetString("name");
+    data.GetVector2("name");
+    data.GetVector3("name");
+    data.GetQuaternion("name");
+    data.GetColor("name");
+    data.GetNbt("name");
+    data.GetBoolArray("name");
+    data.GetByteArray("name");
+    data.GetIntArray("name");
+    data.GetFloatArray("name");
+    data.GetStringArray("name");
+    data.GetVector2Array("name");
+    data.GetVector3Array("name");
+    data.GetQuaternionArray("name");
+    data.GetColorArray("name");
+    data.GetNbtArray("name");
+    
+    //EXAMPLE
     data.GetNbtArray("players")[0].GetString("name");
+
+
