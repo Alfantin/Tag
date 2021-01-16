@@ -1,4 +1,4 @@
-Tag is simple and flexible binary data format inspired from Minecraft's Tag format.
+Tag is simple and flexible binary data format inspired from Minecraft's NBT format.
 I created it for my personal unity projects to save game, level, settings etc and network communication.
 Take care i did not test it enough!
 
