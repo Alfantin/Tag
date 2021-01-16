@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class Nbt : IEnumerable {
+public class Tag : IEnumerable {
 
     private string Name;
     private object Value;
@@ -42,7 +42,7 @@ public class Nbt : IEnumerable {
                 var valueReader = readers[id];
                 dic[key] = valueReader(reader);
             }
-            return new Nbt(){
+            return new Tag(){
                 Value = dic
             };
         },
@@ -101,7 +101,7 @@ public class Nbt : IEnumerable {
             }
         },
         (writer, value) => {
-            var node = (Nbt)value;
+            var node = (Tag)value;
             var dic = (Dictionary<string, object>)node.Value;
             writer.Write(dic.Count);
             foreach (var i in dic) {
@@ -126,7 +126,7 @@ public class Nbt : IEnumerable {
         {typeof(Quaternion), 9},
         {typeof(Color), 10},
         {typeof(Array), 11},
-        {typeof(Nbt), 12}
+        {typeof(Tag), 12}
     };
 
     private static Type[] types = {
@@ -142,17 +142,17 @@ public class Nbt : IEnumerable {
         typeof(Quaternion),
         typeof(Color),
         typeof(Array),
-        typeof(Nbt),
+        typeof(Tag),
     };
 
     //======================================
     //CONSTRUCT
     //======================================
 
-    public Nbt() {
+    public Tag() {
     }
 
-    public Nbt(params Nbt[] childs) {
+    public Tag(params Tag[] childs) {
         if (childs.Length > 0) {
             var dic = new Dictionary<string, object>();
             foreach (var i in childs) {
@@ -165,28 +165,28 @@ public class Nbt : IEnumerable {
         }
     }
 
-    public Nbt(string name, bool value) { Name = name; Value = (object)value; }
-    public Nbt(string name, byte value) { Name = name; Value = (object)value; }
-    public Nbt(string name, int value) { Name = name; Value = (object)value; }
-    public Nbt(string name, float value) { Name = name; Value = (object)value; }
-    public Nbt(string name, string value) { Name = name; Value = (object)value; }
-    public Nbt(string name, Vector2 value) { Name = name; Value = (object)value; }
-    public Nbt(string name, Vector3 value) { Name = name; Value = (object)value; }
-    public Nbt(string name, Vector4 value) { Name = name; Value = (object)value; }
-    public Nbt(string name, Quaternion value) { Name = name; Value = (object)value; }
-    public Nbt(string name, Color value) { Name = name; Value = (object)value; }
+    public Tag(string name, bool value) { Name = name; Value = (object)value; }
+    public Tag(string name, byte value) { Name = name; Value = (object)value; }
+    public Tag(string name, int value) { Name = name; Value = (object)value; }
+    public Tag(string name, float value) { Name = name; Value = (object)value; }
+    public Tag(string name, string value) { Name = name; Value = (object)value; }
+    public Tag(string name, Vector2 value) { Name = name; Value = (object)value; }
+    public Tag(string name, Vector3 value) { Name = name; Value = (object)value; }
+    public Tag(string name, Vector4 value) { Name = name; Value = (object)value; }
+    public Tag(string name, Quaternion value) { Name = name; Value = (object)value; }
+    public Tag(string name, Color value) { Name = name; Value = (object)value; }
 
-    public Nbt(string name, params bool[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params byte[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params int[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params float[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params string[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Vector2[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Vector3[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Vector4[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Quaternion[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Color[] value) { Name = name; Value = (object)value; }
-    public Nbt(string name, params Nbt[] childs) { Name = name; Value = detectNodeOrArray(childs); }
+    public Tag(string name, params bool[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params byte[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params int[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params float[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params string[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Vector2[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Vector3[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Vector4[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Quaternion[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Color[] value) { Name = name; Value = (object)value; }
+    public Tag(string name, params Tag[] childs) { Name = name; Value = detectNodeOrArray(childs); }
 
     //======================================
     //GET DICTIONARY VALUE
@@ -210,7 +210,7 @@ public class Nbt : IEnumerable {
     public Vector3 GetVector3(string name) => (Vector3)Get(name);
     public Quaternion GetQuaternion(string name) => (Quaternion)Get(name);
     public Color GetColor(string name) => (Color)Get(name);
-    public Nbt GetNbt(string name) => (Nbt)Get(name);
+    public Tag GetTag(string name) => (Tag)Get(name);
 
     public bool[] GetBoolArray(string name) => (bool[])Get(name);
     public byte[] GetByteArray(string name) => (byte[])Get(name);
@@ -221,7 +221,7 @@ public class Nbt : IEnumerable {
     public Vector3[] GetVector3Array(string name) => (Vector3[])Get(name);
     public Quaternion[] GetQuaternionArray(string name) => (Quaternion[])Get(name);
     public Color[] GetColorArray(string name) => (Color[])Get(name);
-    public Nbt[] GetNbtArray(string name) => (Nbt[])Get(name);
+    public Tag[] GetTagArray(string name) => (Tag[])Get(name);
 
     //======================================
     //SET DICTIONARY VALUE
@@ -257,7 +257,7 @@ public class Nbt : IEnumerable {
     public void Set(string name, params Vector4[] value) => Set(name, (object)value);
     public void Set(string name, params Quaternion[] value) => Set(name, (object)value);
     public void Set(string name, params Color[] value) => Set(name, (object)value);
-    public void Set(string name, params Nbt[] childs) => Set(name, detectNodeOrArray(childs));
+    public void Set(string name, params Tag[] childs) => Set(name, detectNodeOrArray(childs));
 
 
     //======================================
@@ -282,19 +282,19 @@ public class Nbt : IEnumerable {
         }
     }
 
-    public static Nbt Read(BinaryReader reader) {
+    public static Tag Read(BinaryReader reader) {
         var id = reader.ReadByte();
         var valueReader = readers[id];
-        return (Nbt)valueReader(reader);
+        return (Tag)valueReader(reader);
     }
 
-    public static Nbt Read(Stream stream) {
+    public static Tag Read(Stream stream) {
         using (var reader = new BinaryReader(stream)) {
             return Read(reader);
         }
     }
 
-    public static Nbt Read(string filePath) {
+    public static Tag Read(string filePath) {
         using (var stream = File.OpenRead(filePath)) {
             return Read(stream);
         }
@@ -320,7 +320,7 @@ public class Nbt : IEnumerable {
         return 0;
     }
 
-    private static object detectNodeOrArray(Nbt[] childs) {
+    private static object detectNodeOrArray(Tag[] childs) {
         if (childs.Length > 0) {
             var isArray = childs[0].Name == null;
             foreach (var i in childs) {
@@ -332,12 +332,12 @@ public class Nbt : IEnumerable {
                 return childs;
             }
             else {
-                return new Nbt(childs);
+                return new Tag(childs);
             }
         }
         return null;
     }
-    
+
     private static byte getId(object value) {
         if (value != null) {
             if (value is Array) {
