@@ -1,6 +1,6 @@
 Tag is simple and flexible binary data format inspired from Minecraft's Tag format.
 I created it for my personal unity projects to save game, level, settings etc and network communication.
-I did't test yet. I still developing it.
+Take care i did not test it enough!
 
 SUPPORTED DATA TYPES
 
