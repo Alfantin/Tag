@@ -1,4 +1,4 @@
-This framework is simple and flexible binary data format inspired from Minecraft Named Binary Tag format.
+Tag is simple and flexible binary data format inspired from Minecraft's Tag format.
 
 I created it for my personal unity projects to save game, level, settings etc and network communication.
 
@@ -11,24 +11,24 @@ SUPPORTED TYPES
 
 CONSTRUCTOR
 
-    var data = new Nbt(
-        new Nbt("map", "lake"),
-        new Nbt("settings", 
-            new Nbt("speed", 10),
-            new Nbt("time", 20),
-            new Nbt("private", true)
+    var data = new Tag(
+        new Tag("map", "lake"),
+        new Tag("settings",
+            new Tag("speed", 10),
+            new Tag("time", 20),
+            new Tag("private", true)
         ),
-        new Nbt("players",
-            new Nbt(
-                new Nbt("name", "alfantin"),
-                new Nbt("team", 0)
+        new Tag("players",
+            new Tag(
+                new Tag("name", "alfantin"),
+                new Tag("team", 0)
             ),
-            new Nbt(
-                new Nbt("name", "mike"),
-                new Nbt("team", 1)
+            new Tag(
+                new Tag("name", "mike"),
+                new Tag("team", 1)
             )
         ),
-        new Nbt("teams", 
+        new Tag("teams",
             Color.red,
             Color.blue
         )
@@ -36,8 +36,8 @@ CONSTRUCTOR
 
 TO SAVE & LOAD
 
-    data.Save("test.nbt");
-    data = Nbt.Read("test.nbt");
+    data.Save("test.Tag");
+data = Tag.Read("test.Tag");
     
 TO SET
 
@@ -54,7 +54,7 @@ TO GET
     data.GetVector3("name");
     data.GetQuaternion("name");
     data.GetColor("name");
-    data.GetNbt("name");
+    data.GetTag("name");
     data.GetBoolArray("name");
     data.GetByteArray("name");
     data.GetIntArray("name");
@@ -64,9 +64,9 @@ TO GET
     data.GetVector3Array("name");
     data.GetQuaternionArray("name");
     data.GetColorArray("name");
-    data.GetNbtArray("name");
+    data.GetTagArray("name");
     
     //EXAMPLE
-    data.GetNbtArray("players")[0].GetString("name");
+    data.GetTagArray("players")[0].GetString("name");
 
 
