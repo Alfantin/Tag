@@ -4,7 +4,7 @@ I created it for my personal unity projects to save game, level, settings etc an
 
 I did't test yet. I still developing it.
 
-SUPPORTED TYPES
+SUPPORTED DATA TYPES
 
     bool, byte, int, float, string, Vector2, Vector3, Vector4, Quaternion, Color,
     bool[], byte[], int[], float[], string[], Vector2[], Vector3[], Vector4[], Quaternion[], Color[],
