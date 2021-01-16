@@ -36,7 +36,7 @@ CONSTRUCTOR
 TO SAVE & LOAD
 
     data.Save("test.Tag");
-data = Tag.Read("test.Tag");
+    data = Tag.Read("test.Tag");
     
 TO SET
 
