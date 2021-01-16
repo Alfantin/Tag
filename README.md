@@ -6,7 +6,8 @@ I did't test yet. I still developing it.
 
 SUPPORTED TYPES
 
-    bool, byte, int, float, string, Vector2, Vector3, Vector4, Quaternion, Color
+    bool, byte, int, float, string, Vector2, Vector3, Vector4, Quaternion, Color,
+    bool[], byte[], int[], float[], string[], Vector2[], Vector3[], Vector4[], Quaternion[], Color[],
 
 
 CONSTRUCTOR
