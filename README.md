@@ -1,5 +1,5 @@
 Tag is simple and flexible binary data format inspired from Minecraft's NBT format.
-I created it for my personal unity projects to save game, level, settings etc and network communication.
+I created it for my personal unity projects to save game, level, settings etc and network pockets.
 Take care i did not test it enough!
 
 SUPPORTED DATA TYPES
