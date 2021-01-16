@@ -337,20 +337,14 @@ public class Nbt : IEnumerable {
         }
         return null;
     }
-
+    
     private static byte getId(object value) {
         if (value != null) {
             if (value is Array) {
                 return 11;
             }
             else {
-                try {
-                    return ids[value.GetType()];
-
-                }
-                catch (Exception) {
-                    Debug.Log(value.GetType());
-                }
+                return ids[value.GetType()];
             }
         }
         return 0;
